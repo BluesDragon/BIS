@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        card_view:cardCornerRadius="2dip"
+        card_view:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:orientation="vertical"
+            android:padding="10dip">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/login_username_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="用户名："
+                    android:textColor="#444444"
+                    android:textSize="14dip" />
+
+                <EditText
+                    android:id="@+id/login_username_edittext"
+                    android:layout_width="200dip"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:hint="手机号/银行卡号"
+                    android:textSize="14dip" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/login_password_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="密    码："
+                    android:textColor="#444444"
+                    android:textSize="14dip" />
+
+                <EditText
+                    android:id="@+id/login_password_edittext"
+                    android:layout_width="200dip"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:hint="请输入6位密码..."
+                    android:textSize="14dip" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="200dip"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:paddingBottom="5dip"
+                android:paddingTop="5dip">
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dip"
+                    android:layout_weight="1"
+                    card_view:cardCornerRadius="2dip"
+                    card_view:cardUseCompatPadding="true">
+
+                    <TextView
+                        android:id="@+id/login_btn_cancel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="5dip"
+                        android:text="取消" />
+                </android.support.v7.widget.CardView>
+
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dip"
+                    android:layout_weight="1"
+                    card_view:cardCornerRadius="2dip"
+                    card_view:cardUseCompatPadding="true">
+
+                    <TextView
+                        android:id="@+id/login_btn_login"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="5dip"
+                        android:text="登录"
+                        android:textColor="#1a99ff" />
+                </android.support.v7.widget.CardView>
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+</RelativeLayout>
