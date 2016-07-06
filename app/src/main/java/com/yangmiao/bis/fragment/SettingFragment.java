@@ -22,13 +22,11 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        log("onCreate");
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        log("onCreateView");
         View view = inflater.inflate(R.layout.fragment_setting, null);
         setting_btn_logout = (TextView) view.findViewById(R.id.setting_btn_logout);
         setting_btn_logout.setOnClickListener(this);

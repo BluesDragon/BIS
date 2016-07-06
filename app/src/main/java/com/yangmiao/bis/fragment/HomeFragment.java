@@ -15,13 +15,11 @@ public class HomeFragment extends Fragment{
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        log("onCreate");
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        log("onCreateView");
         View view = inflater.inflate(R.layout.fragment_home, null);
         return view;
     }

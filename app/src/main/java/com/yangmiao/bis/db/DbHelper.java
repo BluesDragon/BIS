@@ -5,8 +5,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import com.yangmiao.bis.db.IProivderMetaData;
-
 public class DbHelper extends SQLiteOpenHelper implements IProivderMetaData {
 
     private static final String TAG = "DbHelper";
@@ -18,15 +16,26 @@ public class DbHelper extends SQLiteOpenHelper implements IProivderMetaData {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String TABLESQL_LOGIN = "create table if not exists "
-                + LoginMetaData.TABLE_NAME + " ("
-                + LoginMetaData.USERNAME + " varchar,"
-                + LoginMetaData.PASSWORD + " varchar)";
+                + LoginColumns.TABLE_NAME + " ("
+                + LoginColumns.COLUMNS_ID + " integer primary key,"
+                + LoginColumns.COLUMNS_USERNAME + " varchar,"
+                + LoginColumns.COLUMNS_PASSWORD + " varchar)";
         db.execSQL(TABLESQL_LOGIN);
 
         String TABLESQL_ACCOUNT = "create table if not exists "
-                + LoginMetaData.TABLE_NAME + " ("
-                + LoginMetaData.USERNAME + " varchar,"
-                + LoginMetaData.PASSWORD + " varchar)";
+                + AccountColumns.TABLE_NAME + " ("
+                + AccountColumns.COLUMNS_ID + " integer primary key,"
+                + AccountColumns.COLUMNS_NAME + " varchar,"
+                + AccountColumns.COLUMNS_SEX + " varchar,"
+                + AccountColumns.COLUMNS_TEL + " varchar,"
+                + AccountColumns.COLUMNS_ADDRESS + " varchar,"
+                + AccountColumns.COLUMNS_COMPANY + " varchar,"
+                + AccountColumns.COLUMNS_ASSETS_TYPE + " integer,"
+                + AccountColumns.COLUMNS_CONSUMER_GRADE + " integer,"
+                + AccountColumns.COLUMNS_CARD_ID + " varchar,"
+                + AccountColumns.COLUMNS_FLAG + " varchar,"
+                + AccountColumns.COLUMNS_ATTRIBUTION + " varchar,"
+                + AccountColumns.COLUMNS_INTEGRAL + " integer)";
         db.execSQL(TABLESQL_ACCOUNT);
     }
 

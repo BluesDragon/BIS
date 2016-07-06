@@ -7,6 +7,7 @@ import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
+import android.text.TextUtils;
 
 import com.yangmiao.bis.db.DbHelper;
 import com.yangmiao.bis.db.IProivderMetaData;
@@ -20,7 +21,7 @@ public class LoginContentProvider extends ContentProvider {
 
     private static UriMatcher uriMatcher;
     private static final int TYPE_LOGIN = 1;
-    private static final String TABLE_NAME = IProivderMetaData.LoginMetaData.TABLE_NAME;
+    private static final String TABLE_NAME = IProivderMetaData.LoginColumns.TABLE_NAME;
 
     private DbHelper dbHelper;
     private SQLiteDatabase db;
@@ -40,7 +41,7 @@ public class LoginContentProvider extends ContentProvider {
     public String getType(Uri uri) {
         switch (uriMatcher.match(uri)) {
             case TYPE_LOGIN:
-                return IProivderMetaData.LoginMetaData.LIST;
+                return IProivderMetaData.LoginColumns.LIST;
             default:
                 throw new IllegalArgumentException("This is a unKnow Uri"
                         + uri.toString());
@@ -102,10 +103,25 @@ public class LoginContentProvider extends ContentProvider {
             return;
         }
         ContentValues contentValues = new ContentValues();
-        contentValues.put(IProivderMetaData.LoginMetaData.USERNAME, username);
-        contentValues.put(IProivderMetaData.LoginMetaData.PASSWORD, password);
-        context.getContentResolver().insert(IProivderMetaData.LoginMetaData.CONTENT_URI, contentValues);
+        contentValues.put(IProivderMetaData.LoginColumns.COLUMNS_USERNAME, username);
+        contentValues.put(IProivderMetaData.LoginColumns.COLUMNS_PASSWORD, password);
+        context.getContentResolver().insert(IProivderMetaData.LoginColumns.CONTENT_URI, contentValues);
         SpUtils.putString(context, SP_NAME, SP_KEY_STRING_LOGIN_USERNAME, username);
+    }
+
+    public static boolean checkUser(Context context, String username, String password) {
+        if(context == null){
+            return false;
+        }
+        Cursor query = context.getContentResolver().query(IProivderMetaData.LoginColumns.CONTENT_URI, null, " " + IProivderMetaData.LoginColumns.COLUMNS_USERNAME + " = ?", new String[]{username}, null);
+        while (query != null && query.moveToNext()) {
+            String pw = query.getString(query
+                    .getColumnIndex(IProivderMetaData.LoginColumns.COLUMNS_PASSWORD));
+            if (!TextUtils.isEmpty(pw) && pw.equals(password)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public static void logout(Context context) {
@@ -120,7 +136,7 @@ public class LoginContentProvider extends ContentProvider {
         if (context == null) {
             return;
         }
-        context.getContentResolver().delete(IProivderMetaData.LoginMetaData.CONTENT_URI, " where username = ?", new String[]{" " + username + " "});
+        context.getContentResolver().delete(IProivderMetaData.LoginColumns.CONTENT_URI, " where username = ?", new String[]{" " + username + " "});
         SpUtils.remove(context, SP_NAME, SP_KEY_STRING_LOGIN_USERNAME);
     }
 

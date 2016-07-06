@@ -5,15 +5,35 @@
     android:layout_height="match_parent">
 
     <RelativeLayout
+        android:id="@+id/main_title_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="56dp"
+        android:layout_alignParentTop="true"
+        android:background="#dc0a0a">
+
+        <TextView
+            android:id="@+id/main_title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textSize="20dip"
+            android:textStyle="bold"
+            android:text="title"
+            android:textColor="@android:color/white" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/main_title_layout">
 
         <com.yangmiao.bis.springindicator.SpringIndicator xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/indicator"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:background="#939393"
             android:layout_alignParentBottom="true"
+            android:background="#939393"
             android:paddingLeft="20dip"
             android:paddingRight="20dip"
             app:siIndicatorColor="@color/colorPrimary"
@@ -24,9 +44,9 @@
 
         <com.yangmiao.bis.springindicator.viewpager.ScrollerViewPager
             android:id="@+id/view_pager"
-            android:layout_above="@id/indicator"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_above="@id/indicator"
             android:layout_gravity="center" />
     </RelativeLayout>
 

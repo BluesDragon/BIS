@@ -14,7 +14,6 @@ public class AccountInfo {
     public static final int ConsumerGrade_CAIFU = 3;
     public static final int ConsumerGrade_SIHANG = 4;
 
-
     public String name;// 姓名
     public String sex;// 性别
     public String tel;// 电话
@@ -27,5 +26,38 @@ public class AccountInfo {
     public String attribution;// 归属地
     public int integral;// 积分
 
+    public AccountInfo() {
 
+    }
+
+    public AccountInfo(String name, String sex, String tel, String address, String company, int assetsType, int consumerGrade, String cardId, String flag, String attribution, int integral) {
+        this.name = name;
+        this.sex = sex;
+        this.tel = tel;
+        this.address = address;
+        this.company = company;
+        this.assetsType = assetsType;
+        this.consumerGrade = consumerGrade;
+        this.cardId = cardId;
+        this.flag = flag;
+        this.attribution = attribution;
+        this.integral = integral;
+    }
+
+    @Override
+    public String toString() {
+        return "AccountInfo{" +
+                "name='" + name + '\'' +
+                ", sex='" + sex + '\'' +
+                ", tel='" + tel + '\'' +
+                ", address='" + address + '\'' +
+                ", company='" + company + '\'' +
+                ", assetsType=" + assetsType +
+                ", consumerGrade=" + consumerGrade +
+                ", cardId='" + cardId + '\'' +
+                ", flag='" + flag + '\'' +
+                ", attribution='" + attribution + '\'' +
+                ", integral=" + integral +
+                '}';
+    }
 }

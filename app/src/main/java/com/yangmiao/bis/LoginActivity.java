@@ -1,8 +1,6 @@
 package com.yangmiao.bis;
 
 import android.app.Activity;
-import android.content.ContentValues;
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -36,7 +34,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     }
 
     private void init() {
-        if (!checkUser(DEFAULT_USERNAME, DEFAULT_PASSWORD)) {
+        if (!LoginContentProvider.checkUser(this, DEFAULT_USERNAME, DEFAULT_PASSWORD)) {
             LoginContentProvider.insertUser(this, DEFAULT_USERNAME, DEFAULT_PASSWORD);
         }
         initView();
@@ -86,7 +84,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             text = "用户名输入错误！";
         } else if (!Validator.isPassword(password)) {
             text = "密码输入错误！";
-        } else if (checkUser(username, password)) {
+        } else if (LoginContentProvider.checkUser(this, username, password)) {
             text = "登录成功！";
             succ = true;
         } else {
@@ -100,16 +98,5 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         }
     }
 
-    private boolean checkUser(String username, String password) {
-        Cursor query = getContentResolver().query(IProivderMetaData.LoginMetaData.CONTENT_URI, null, " " + IProivderMetaData.LoginMetaData.USERNAME + " = ?", new String[]{username}, null);
-        while (query != null && query.moveToNext()) {
-            String pw = query.getString(query
-                    .getColumnIndex(IProivderMetaData.LoginMetaData.PASSWORD));
-            if (!TextUtils.isEmpty(pw) && pw.equals(password)) {
-                return true;
-            }
-        }
-        return false;
-    }
 
 }
