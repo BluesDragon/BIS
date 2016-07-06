@@ -2,20 +2,13 @@ package com.yangmiao.bis.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.yangmiao.bis.R;
-import com.yangmiao.bis.util.LogUtil;
 
-public class IntegralFragment extends Fragment{
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
+public class IntegralFragment extends BaseFragment{
 
     @Nullable
     @Override
@@ -24,8 +17,8 @@ public class IntegralFragment extends Fragment{
         return view;
     }
 
-    private void log(String log){
-        LogUtil.d("IntegralFragment-->" + log);
-    }
+    @Override
+    public void onFragmentSelected() {
 
+    }
 }

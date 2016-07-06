@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="5dip"
+        android:layout_weight="1"
+        card_view:cardCornerRadius="2dip"
+        card_view:cardUseCompatPadding="true">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/produce_item_produce_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dip"
+                android:layout_marginTop="10dip"
+                android:text="FSAA14081M"
+                android:textColor="#000000"
+                android:textSize="15dip" />
+
+            <TextView
+                android:id="@+id/produce_item_produce_leixing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/produce_item_produce_number"
+                android:layout_marginLeft="30dip"
+                android:layout_toRightOf="@id/produce_item_produce_number"
+                android:text="封闭性理财"
+                android:textColor="#000000"
+                android:textSize="15dip" />
+
+            <View
+                android:id="@+id/produce_item_view"
+                android:layout_width="fill_parent"
+                android:layout_height="1dip"
+                android:layout_below="@id/produce_item_produce_number"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="10dip"
+                android:layout_marginTop="5dip"
+                android:background="#444444" />
+
+            <TextView
+                android:id="@+id/produce_item_yuqishouyi_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/produce_item_view"
+                android:layout_marginLeft="10dip"
+                android:layout_marginTop="5dip"
+                android:text="预期年化收益"
+                android:textColor="#000000"
+                android:textSize="15dip" />
+
+            <TextView
+                android:id="@+id/produce_item_yuqishouyi"
+                android:layout_width="wrap_content"
+                android:layout_height="50dip"
+                android:layout_below="@id/produce_item_yuqishouyi_name"
+                android:layout_marginLeft="10dip"
+                android:layout_marginTop="10dip"
+                android:gravity="center"
+                android:text="5.7%"
+                android:textColor="#ff0000"
+                android:textSize="30dip" />
+
+            <TextView
+                android:id="@+id/produce_item_qigoujine_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/produce_item_view"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dip"
+                android:text="起购金额"
+                android:textColor="#000000"
+                android:textSize="15dip" />
+
+            <RelativeLayout
+                android:layout_width="65dip"
+                android:layout_height="50dip"
+                android:layout_alignLeft="@id/produce_item_qigoujine_name"
+                android:layout_below="@id/produce_item_qigoujine_name"
+                android:layout_marginTop="10dip"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/produce_item_qigoujine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:gravity="bottom"
+                    android:text="5"
+                    android:textColor="#008000"
+                    android:textSize="30dip" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/produce_item_qigoujine"
+                    android:layout_alignBottom="@id/produce_item_qigoujine"
+                    android:text="万"
+                    android:paddingBottom="5dip"
+                    android:textColor="#000000"
+                    android:textSize="15dip" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/produce_item_view"
+                android:layout_marginRight="10dip"
+                android:layout_marginTop="5dip">
+
+                <TextView
+                    android:id="@+id/produce_item_licaiqixian_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="理财期限"
+                    android:textColor="#000000"
+                    android:textSize="15dip" />
+
+                <TextView
+                    android:id="@+id/produce_item_produce_item_licaiqixian_tianshu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/produce_item_licaiqixian_name"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dip"
+                    android:text="35天"
+                    android:textColor="#000000"
+                    android:textSize="15dip" />
+
+                <TextView
+                    android:id="@+id/produce_item_produce_item_licaiqixian_qixian"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/produce_item_produce_item_licaiqixian_tianshu"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dip"
+                    android:text="2014.04.01-2014.05.01"
+                    android:textColor="#000000"
+                    android:textSize="10dip" />
+
+                <ImageView
+                    android:layout_width="20dip"
+                    android:layout_height="20dip"
+                    android:layout_alignTop="@id/produce_item_produce_item_licaiqixian_tianshu"
+                    android:layout_marginLeft="15dip"
+                    android:layout_toRightOf="@id/produce_item_produce_item_licaiqixian_tianshu"
+                    android:src="@mipmap/triangle" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

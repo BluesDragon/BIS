@@ -37,7 +37,7 @@
                     android:layout_width="200dip"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:hint="手机号/银行卡号"
+                    android:hint="手机号/身份证号"
                     android:textSize="14dip" />
             </LinearLayout>
 
@@ -58,6 +58,7 @@
                 <EditText
                     android:id="@+id/login_password_edittext"
                     android:layout_width="200dip"
+                    android:inputType="numberPassword"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:hint="请输入6位密码..."

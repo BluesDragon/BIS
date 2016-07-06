@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -16,10 +15,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:textSize="20dip"
-            android:textStyle="bold"
-            android:text="title"
-            android:textColor="@android:color/white" />
+            android:text="欢迎使用积分管理系统"
+            android:textColor="@android:color/white"
+            android:textSize="16dip" />
 
     </RelativeLayout>
 
@@ -31,23 +29,22 @@
         <com.yangmiao.bis.springindicator.SpringIndicator xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/indicator"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_height="40dp"
             android:layout_alignParentBottom="true"
-            android:background="#939393"
+            android:background="#f1f0ec"
             android:paddingLeft="20dip"
             android:paddingRight="20dip"
             app:siIndicatorColor="@color/colorPrimary"
             app:siIndicatorColors="@array/indicator_colors"
             app:siSelectedTextColor="@android:color/white"
             app:siTextColor="@color/colorPrimaryDark"
-            app:siTextSize="18sp" />
+            app:siTextSize="14sp" />
 
         <com.yangmiao.bis.springindicator.viewpager.ScrollerViewPager
             android:id="@+id/view_pager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@id/indicator"
-            android:layout_gravity="center" />
+            android:layout_above="@id/indicator" />
     </RelativeLayout>
 
 </RelativeLayout>

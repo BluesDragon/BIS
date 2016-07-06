@@ -8,10 +8,14 @@ import com.yangmiao.bis.util.SpUtils;
 
 public class BisApplication extends Application {
 
+    private static final String INIT_DATA = "init_data";
+    private static final String INIT = "init";
+
     @Override
     public void onCreate() {
         super.onCreate();
-        if (!SpUtils.getBoolean(this, "init_data", "init")) {
+        if (!SpUtils.getBoolean(this, INIT_DATA, INIT, false)) {
+            SpUtils.putBoolean(this, INIT_DATA, INIT, true);
             initAccountData();
         }
     }

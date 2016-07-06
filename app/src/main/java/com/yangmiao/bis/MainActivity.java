@@ -7,6 +7,7 @@ import android.support.v4.view.ViewPager;
 import android.widget.TextView;
 
 import com.yangmiao.bis.adapter.MyAdapter;
+import com.yangmiao.bis.fragment.BaseFragment;
 import com.yangmiao.bis.fragment.HomeFragment;
 import com.yangmiao.bis.fragment.IntegralFragment;
 import com.yangmiao.bis.fragment.SearchFragment;
@@ -24,7 +25,7 @@ public class MainActivity extends FragmentActivity {
     private ScrollerViewPager viewPager;
     private MyAdapter myAdapter;
 
-    private List<Fragment> fragmentList = new ArrayList<>();
+    private List<BaseFragment> fragmentList = new ArrayList<>();
     private List<HomePageInfo> dataList = new ArrayList<>();
 
     private TextView main_title_text;
@@ -51,9 +52,12 @@ public class MainActivity extends FragmentActivity {
         viewPager.fixScrollSpeed();
         SpringIndicator springIndicator = (SpringIndicator) findViewById(R.id.indicator);
         springIndicator.setViewPager(viewPager);
-        if (main_title_text != null) {
-            main_title_text.setText(dataList.get(0).title);
-        }
+
+        int defaultIndex = 0;
+        fragmentList.get(defaultIndex).onFragmentSelected();
+//        if (main_title_text != null) {
+//            main_title_text.setText(dataList.get(defaultIndex).title);
+//        }
     }
 
     private void setListener() {
@@ -65,9 +69,10 @@ public class MainActivity extends FragmentActivity {
 
             @Override
             public void onPageSelected(int position) {
-                if (main_title_text != null) {
-                    main_title_text.setText(dataList.get(position).title);
-                }
+                fragmentList.get(position).onFragmentSelected();
+//                if (main_title_text != null) {
+//                    main_title_text.setText(dataList.get(position).title);
+//                }
             }
 
             @Override

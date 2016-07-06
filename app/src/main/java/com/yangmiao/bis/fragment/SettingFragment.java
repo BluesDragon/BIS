@@ -3,7 +3,6 @@ package com.yangmiao.bis.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,14 +14,9 @@ import com.yangmiao.bis.db.login.LoginContentProvider;
 import com.yangmiao.bis.util.LogUtil;
 import com.yangmiao.bis.util.ViewScaleInjector;
 
-public class SettingFragment extends Fragment implements View.OnClickListener {
+public class SettingFragment extends BaseFragment implements View.OnClickListener {
 
     private TextView setting_btn_logout;
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
 
     @Nullable
     @Override
@@ -44,8 +38,10 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
         }
     }
 
-    private void log(String log) {
-        LogUtil.d("SettingFragment-->" + log);
+    @Override
+    public void onFragmentSelected() {
+
     }
+
 
 }
