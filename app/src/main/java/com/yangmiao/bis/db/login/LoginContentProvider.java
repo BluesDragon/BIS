@@ -2,6 +2,7 @@ package com.yangmiao.bis.db.login;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -9,8 +10,13 @@ import android.net.Uri;
 
 import com.yangmiao.bis.db.DbHelper;
 import com.yangmiao.bis.db.IProivderMetaData;
+import com.yangmiao.bis.util.SpUtils;
 
 public class LoginContentProvider extends ContentProvider {
+
+    public static final String SP_NAME = "sp_name_login";
+    public static final String SP_KEY_BOOLEAN_ISLOGIN = "sp_key_boolean_islogin";
+    public static final String SP_KEY_STRING_LOGIN_USERNAME = "sp_key_string_login_username";
 
     private static UriMatcher uriMatcher;
     private static final int TYPE_LOGIN = 1;
@@ -85,6 +91,37 @@ public class LoginContentProvider extends ContentProvider {
                       String[] selectionArgs) {
         // TODO Auto-generated method stub
         return 0;
+    }
+
+    public static boolean isLogin(Context context) {
+        return SpUtils.getBoolean(context, SP_NAME, SP_KEY_BOOLEAN_ISLOGIN, false);
+    }
+
+    public static void insertUser(Context context, String username, String password) {
+        if (context == null) {
+            return;
+        }
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(IProivderMetaData.LoginMetaData.USERNAME, username);
+        contentValues.put(IProivderMetaData.LoginMetaData.PASSWORD, password);
+        context.getContentResolver().insert(IProivderMetaData.LoginMetaData.CONTENT_URI, contentValues);
+        SpUtils.putString(context, SP_NAME, SP_KEY_STRING_LOGIN_USERNAME, username);
+    }
+
+    public static void logout(Context context) {
+        deleteUser(context, getCurrentLoginUsername(context));
+    }
+
+    public static String getCurrentLoginUsername(Context context) {
+        return SpUtils.getString(context, SP_NAME, SP_KEY_STRING_LOGIN_USERNAME);
+    }
+
+    public static void deleteUser(Context context, String username) {
+        if (context == null) {
+            return;
+        }
+        context.getContentResolver().delete(IProivderMetaData.LoginMetaData.CONTENT_URI, " where username = ?", new String[]{" " + username + " "});
+        SpUtils.remove(context, SP_NAME, SP_KEY_STRING_LOGIN_USERNAME);
     }
 
 }

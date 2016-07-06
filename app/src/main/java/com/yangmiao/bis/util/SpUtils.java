@@ -64,6 +64,13 @@ public class SpUtils {
         return pref.getInt(key, defValue);
     }
 
+    public static void remove(Context context, String name, String key) {
+        SharedPreferences pref = context.getSharedPreferences(name, mode);
+        Editor edit = pref.edit();
+        edit.remove(key);
+        edit.commit();
+    }
+
     public static Map<String, String> getAll(Context context, String name) {
         SharedPreferences pref = context.getSharedPreferences(name, mode);
         return (Map<String, String>) pref.getAll();

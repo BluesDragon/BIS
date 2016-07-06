@@ -10,6 +10,8 @@ import android.os.Handler;
 import android.os.Message;
 import android.widget.ImageView;
 
+import com.yangmiao.bis.db.login.LoginContentProvider;
+
 public class WelcomActivity extends Activity {
 
     private static final int FINISH = 1;
@@ -23,7 +25,7 @@ public class WelcomActivity extends Activity {
             super.handleMessage(msg);
             switch (msg.what) {
                 case FINISH:
-                    if(LoginActivity.isLogin(WelcomActivity.this)){
+                    if(LoginContentProvider.isLogin(WelcomActivity.this)){
                         startActivity(new Intent(WelcomActivity.this, MainActivity.class));
                     } else {
                         startActivity(new Intent(WelcomActivity.this, LoginActivity.class));

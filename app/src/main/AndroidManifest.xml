@@ -33,7 +33,7 @@
 
         <provider
             android:name=".db.login.LoginContentProvider"
-            android:authorities="com.yangmiao.bis.db.provider"
+            android:authorities="com.yangmiao.bis.login.provider"
             android:exported="false" />
         <provider
             android:name=".db.account.AccountContentProvider"

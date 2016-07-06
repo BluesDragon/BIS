@@ -1,7 +1,6 @@
 package com.yangmiao.bis;
 
 import android.app.Activity;
-import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -14,14 +13,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.yangmiao.bis.db.IProivderMetaData;
+import com.yangmiao.bis.db.login.LoginContentProvider;
 import com.yangmiao.bis.util.SpUtils;
 import com.yangmiao.bis.util.Validator;
+import com.yangmiao.bis.util.ViewScaleInjector;
 
 public class LoginActivity extends Activity implements View.OnClickListener {
-
-    public static final String SP_NAME = "sp_name_login";
-    public static final String SP_KEY_BOOLEAN_ISLOGIN = "sp_key_boolean_islogin";
-    public static final String SP_KEY_STRING_LOGIN_USERNAME = "sp_key_string_login_username";
 
     public static final String DEFAULT_USERNAME = "18600390104";
     public static final String DEFAULT_PASSWORD = "123456";
@@ -31,8 +28,6 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     private EditText login_username_edittext;
     private EditText login_password_edittext;
 
-    private ContentResolver mContentResolver;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,9 +36,8 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     }
 
     private void init() {
-        mContentResolver = getContentResolver();
         if (!checkUser(DEFAULT_USERNAME, DEFAULT_PASSWORD)) {
-            insertUser(DEFAULT_USERNAME, DEFAULT_PASSWORD);
+            LoginContentProvider.insertUser(this, DEFAULT_USERNAME, DEFAULT_PASSWORD);
         }
         initView();
         setListener();
@@ -55,7 +49,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         login_username_edittext = (EditText) findViewById(R.id.login_username_edittext);
         login_password_edittext = (EditText) findViewById(R.id.login_password_edittext);
 
-        String username = SpUtils.getString(this, SP_NAME, SP_KEY_STRING_LOGIN_USERNAME);
+        String username = LoginContentProvider.getCurrentLoginUsername(this);
         if (!TextUtils.isEmpty(username)) {
             login_username_edittext.setText(username);
             login_password_edittext.requestFocus();
@@ -67,10 +61,8 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     private void setListener() {
         login_btn_login.setOnClickListener(this);
         login_btn_cancel.setOnClickListener(this);
-    }
-
-    public static boolean isLogin(Context context) {
-        return SpUtils.getBoolean(context, SP_NAME, SP_KEY_BOOLEAN_ISLOGIN, false);
+        ViewScaleInjector.injectClickToBeSmallerIntoView(login_btn_login);
+        ViewScaleInjector.injectClickToBeSmallerIntoView(login_btn_cancel);
     }
 
     @Override
@@ -102,14 +94,15 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         }
         Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
         if (succ) {
+            SpUtils.putBoolean(this, LoginContentProvider.SP_NAME, LoginContentProvider.SP_KEY_BOOLEAN_ISLOGIN, true);
             startActivity(new Intent(this, MainActivity.class));
             finish();
         }
     }
 
     private boolean checkUser(String username, String password) {
-        Cursor query = mContentResolver.query(IProivderMetaData.LoginMetaData.CONTENT_URI, null, " " + IProivderMetaData.LoginMetaData.USERNAME + " = ?", new String[]{username}, null);
-        while (query.moveToNext()) {
+        Cursor query = getContentResolver().query(IProivderMetaData.LoginMetaData.CONTENT_URI, null, " " + IProivderMetaData.LoginMetaData.USERNAME + " = ?", new String[]{username}, null);
+        while (query != null && query.moveToNext()) {
             String pw = query.getString(query
                     .getColumnIndex(IProivderMetaData.LoginMetaData.PASSWORD));
             if (!TextUtils.isEmpty(pw) && pw.equals(password)) {
@@ -119,12 +112,4 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         return false;
     }
 
-    private void insertUser(String username, String password) {
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(IProivderMetaData.LoginMetaData.USERNAME, username);
-        contentValues.put(IProivderMetaData.LoginMetaData.PASSWORD, password);
-        mContentResolver.insert(IProivderMetaData.LoginMetaData.CONTENT_URI, contentValues);
-        SpUtils.putBoolean(this, SP_NAME, SP_KEY_BOOLEAN_ISLOGIN, true);
-        SpUtils.putString(this, SP_NAME, SP_KEY_STRING_LOGIN_USERNAME, username);
-    }
 }
