@@ -20,7 +20,6 @@ public class SearchFragment extends BaseFragment {
     private RecyclerView search_recyclerview;
 
     private List<AccountInfo> list;
-    private LinearLayoutManager linearLayoutManager;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -35,10 +34,7 @@ public class SearchFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_search, null);
         search_recyclerview = (RecyclerView) view.findViewById(R.id.search_recyclerview);
-        if (linearLayoutManager == null) {
-            linearLayoutManager = new LinearLayoutManager(getContext());
-        }
-        search_recyclerview.setLayoutManager(linearLayoutManager);
+        search_recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
         search_recyclerview.setAdapter(mAdapter);
         return view;
     }
