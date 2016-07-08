@@ -31,10 +31,8 @@ public class HomeListItemViewHolder extends BaseViewHolder {
         list_item_fragment_home_title.setText(info.title);
         if (myAdapter == null) {
             myAdapter = new MyAdapter();
-            list_item_fragment_home_recyclerview.setAdapter(myAdapter);
-        } else {
-            myAdapter.notifyDataSetChanged();
         }
+        list_item_fragment_home_recyclerview.setAdapter(myAdapter);
     }
 
     private class MyAdapter extends RecyclerView.Adapter {

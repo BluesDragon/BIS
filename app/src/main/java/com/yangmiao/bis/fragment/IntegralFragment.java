@@ -37,10 +37,8 @@ public class IntegralFragment extends BaseFragment {
         fragment_integration_recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
         if(myAdapter == null){
             myAdapter = new MyAdapter();
-            fragment_integration_recyclerview.setAdapter(myAdapter);
-        } else {
-            myAdapter.notifyDataSetChanged();
         }
+        fragment_integration_recyclerview.setAdapter(myAdapter);
         return view;
     }
 
