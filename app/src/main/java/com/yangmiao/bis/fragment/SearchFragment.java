@@ -17,8 +17,6 @@ import java.util.List;
 
 public class SearchFragment extends BaseFragment {
 
-    private RecyclerView search_recyclerview;
-
     private List<AccountInfo> list;
 
     @Override
@@ -33,14 +31,11 @@ public class SearchFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_search, null);
-        search_recyclerview = (RecyclerView) view.findViewById(R.id.search_recyclerview);
-        search_recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
-        search_recyclerview.setAdapter(mAdapter);
         return view;
     }
 
     @Override
-    public void onFragmentSelected() {
+    public void onSelected() {
 
     }
 
@@ -57,7 +52,7 @@ public class SearchFragment extends BaseFragment {
 
         @Override
         public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = View.inflate(parent.getContext(), R.layout.layout_search_list_item, null);
+            View view = View.inflate(parent.getContext(), R.layout.list_item_fragment_search, null);
             return new MyViewHolder(view);
         }
 

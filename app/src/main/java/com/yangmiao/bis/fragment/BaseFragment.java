@@ -6,7 +6,7 @@ import com.yangmiao.bis.util.LogUtil;
 
 public abstract class BaseFragment extends Fragment {
 
-    public abstract void onFragmentSelected();
+    public abstract void onSelected();
 
     protected void log(String log) {
         LogUtil.d(getClass().getSimpleName() + "-->" + log);

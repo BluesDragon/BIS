@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dip">
+
+        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/list_item_fragment_home_assets_item_fenqi_cardview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="5dip"
+            card_view:cardCornerRadius="2dip"
+            card_view:cardUseCompatPadding="true">
+
+            <TextView
+                android:id="@+id/list_item_fragment_home_assets_item_fenqi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left|center_vertical"
+                android:padding="5dip"
+                android:textSize="16dip"
+                android:text="分期"
+                android:textColor="#1a99ff" />
+        </android.support.v7.widget.CardView>
+
+        <TextView
+            android:id="@+id/list_item_fragment_home_assets_item_change_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/list_item_fragment_home_assets_item_fenqi_cardview"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="5dip"
+            android:text="2016.7.8"
+            android:textColor="#444444" />
+
+        <TextView
+            android:id="@+id/list_item_fragment_home_assets_item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="5dip"
+            android:text="张三"
+            android:textColor="#444444" />
+
+        <TextView
+            android:id="@+id/list_item_fragment_home_assets_item_assets_change"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/list_item_fragment_home_assets_item_change_time"
+            android:layout_toRightOf="@id/list_item_fragment_home_assets_item_name"
+            android:layout_weight="5"
+            android:gravity="center"
+            android:padding="5dip"
+            android:text="入账10000"
+            android:textColor="#444444" />
+
+    </RelativeLayout>
+</FrameLayout>

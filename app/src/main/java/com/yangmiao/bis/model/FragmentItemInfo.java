@@ -1,12 +1,12 @@
 package com.yangmiao.bis.model;
 
-public class HomePageInfo {
+public class FragmentItemInfo {
 
-    public HomePageInfo(){
+    public FragmentItemInfo(){
 
     }
 
-    public HomePageInfo(String title, String description){
+    public FragmentItemInfo(String title, String description){
         this.title = title;
         this.description = description;
     }

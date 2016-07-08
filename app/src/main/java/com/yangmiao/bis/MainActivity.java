@@ -1,7 +1,6 @@
 package com.yangmiao.bis;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.widget.TextView;
@@ -12,7 +11,7 @@ import com.yangmiao.bis.fragment.HomeFragment;
 import com.yangmiao.bis.fragment.IntegralFragment;
 import com.yangmiao.bis.fragment.SearchFragment;
 import com.yangmiao.bis.fragment.SettingFragment;
-import com.yangmiao.bis.model.HomePageInfo;
+import com.yangmiao.bis.model.FragmentItemInfo;
 import com.yangmiao.bis.springindicator.SpringIndicator;
 import com.yangmiao.bis.springindicator.viewpager.ScrollerViewPager;
 import com.yangmiao.bis.util.LogUtil;
@@ -26,7 +25,7 @@ public class MainActivity extends FragmentActivity {
     private MyAdapter myAdapter;
 
     private List<BaseFragment> fragmentList = new ArrayList<>();
-    private List<HomePageInfo> dataList = new ArrayList<>();
+    private List<FragmentItemInfo> dataList = new ArrayList<>();
 
     private TextView main_title_text;
 
@@ -54,7 +53,7 @@ public class MainActivity extends FragmentActivity {
         springIndicator.setViewPager(viewPager);
 
         int defaultIndex = 0;
-        fragmentList.get(defaultIndex).onFragmentSelected();
+        fragmentList.get(defaultIndex).onSelected();
 //        if (main_title_text != null) {
 //            main_title_text.setText(dataList.get(defaultIndex).title);
 //        }
@@ -69,7 +68,7 @@ public class MainActivity extends FragmentActivity {
 
             @Override
             public void onPageSelected(int position) {
-                fragmentList.get(position).onFragmentSelected();
+                fragmentList.get(position).onSelected();
 //                if (main_title_text != null) {
 //                    main_title_text.setText(dataList.get(position).title);
 //                }
@@ -93,10 +92,10 @@ public class MainActivity extends FragmentActivity {
     }
 
     private void initData() {
-        dataList.add(new HomePageInfo("首页", "首页"));
-        dataList.add(new HomePageInfo("查询", "查询"));
-        dataList.add(new HomePageInfo("积分", "积分"));
-        dataList.add(new HomePageInfo("设置", "设置"));
+        dataList.add(new FragmentItemInfo("首页", "首页"));
+        dataList.add(new FragmentItemInfo("查询", "查询"));
+        dataList.add(new FragmentItemInfo("积分", "积分"));
+        dataList.add(new FragmentItemInfo("设置", "设置"));
     }
 
     private void log(String log) {

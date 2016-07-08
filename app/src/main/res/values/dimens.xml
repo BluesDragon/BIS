@@ -4,6 +4,6 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
 
     <dimen name="si_default_text_size">18sp</dimen>
-    <dimen name="si_default_radius_max">22dp</dimen>
+    <dimen name="si_default_radius_max">20dp</dimen>
     <dimen name="si_default_radius_min">8dp</dimen>
 </resources>

@@ -5,16 +5,16 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.yangmiao.bis.fragment.BaseFragment;
-import com.yangmiao.bis.model.HomePageInfo;
+import com.yangmiao.bis.model.FragmentItemInfo;
 
 import java.util.List;
 
 public class MyAdapter extends FragmentPagerAdapter {
 
     private List<BaseFragment> fragmentList;
-    private List<HomePageInfo> dataList;
+    private List<FragmentItemInfo> dataList;
 
-    public MyAdapter(FragmentManager fm, List<BaseFragment> fragmentList, List<HomePageInfo> dataList) {
+    public MyAdapter(FragmentManager fm, List<BaseFragment> fragmentList, List<FragmentItemInfo> dataList) {
         super(fm);
         this.fragmentList = fragmentList;
         this.dataList = dataList;

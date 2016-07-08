@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dip">
+
+        <TextView
+            android:id="@+id/list_item_fragment_home_assets_item_change_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="5dip"
+            android:text="2016.7.8"
+            android:textColor="#444444" />
+
+        <TextView
+            android:id="@+id/list_item_fragment_home_assets_item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="5dip"
+            android:text="张三"
+            android:textColor="#444444" />
+
+        <TextView
+            android:id="@+id/list_item_fragment_home_assets_item_assets_change"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/list_item_fragment_home_assets_item_change_time"
+            android:layout_toRightOf="@id/list_item_fragment_home_assets_item_name"
+            android:layout_weight="5"
+            android:gravity="center"
+            android:padding="5dip"
+            android:text="入账10000"
+            android:textColor="#444444" />
+
+    </RelativeLayout>
+</FrameLayout>

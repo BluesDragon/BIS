@@ -18,7 +18,7 @@ public class IntegralFragment extends BaseFragment{
     }
 
     @Override
-    public void onFragmentSelected() {
+    public void onSelected() {
 
     }
 }

@@ -7,8 +7,33 @@
         android:id="@+id/welcome_img"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="fitXY"
         android:layout_centerInParent="true"
+        android:scaleType="fitXY"
         android:src="@mipmap/splash" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="bottom"
+        android:layout_marginBottom="40dip"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="作者："
+            android:textColor="@android:color/white"
+            android:textSize="20dip" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="杨淼"
+            android:textColor="@android:color/white"
+            android:textSize="30dip" />
+
+    </LinearLayout>
 
 </RelativeLayout>
