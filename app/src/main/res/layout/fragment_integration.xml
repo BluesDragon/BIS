@@ -4,6 +4,19 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <TextView
+        android:id="@+id/fragment_integration_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="12dip"
+        android:text="积分排行：" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/fragment_integration_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dip"
+        android:layout_below="@id/fragment_integration_title" />
 
 
 </RelativeLayout>

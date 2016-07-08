@@ -19,13 +19,13 @@ public class HomeListItemFactory {
         View view = null;
         switch (viewType) {
             case TYPE_RUZHANG:
-                view = View.inflate(parent.getContext(), R.layout.list_item_fragment_home_assets_item_1, null);
+                view = View.inflate(parent.getContext(), R.layout.list_item_fragment_home_list_item_1, null);
                 break;
             case TYPE_FENQI:
-                view = View.inflate(parent.getContext(), R.layout.list_item_fragment_home_assets_item_2, null);
+                view = View.inflate(parent.getContext(), R.layout.list_item_fragment_home_list_item_2, null);
                 break;
             case TYPE_CHUZHANG:
-                view = View.inflate(parent.getContext(), R.layout.list_item_fragment_home_assets_item_1, null);
+                view = View.inflate(parent.getContext(), R.layout.list_item_fragment_home_list_item_1, null);
                 break;
         }
         return view;

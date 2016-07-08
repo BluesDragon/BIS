@@ -115,26 +115,34 @@ public class AccountContentProvider extends ContentProvider {
     }
 
     public static List<AccountInfo> queryAll(Context context) {
-        List<AccountInfo> list = null;
-        if (context != null) {
-            list = new ArrayList<>();
-            Cursor query = context.getContentResolver().query(IProivderMetaData.AccountColumns.URI_ACCOUNT, null, null, null, null);
-            while (query != null && query.moveToNext()) {
-                AccountInfo accountInfo = new AccountInfo();
-                accountInfo.name = query.getString(query.getColumnIndex(IProivderMetaData.AccountColumns.COLUMNS_NAME));
-                accountInfo.sex = query.getString(query.getColumnIndex(IProivderMetaData.AccountColumns.COLUMNS_SEX));
-                accountInfo.tel = query.getString(query.getColumnIndex(IProivderMetaData.AccountColumns.COLUMNS_TEL));
-                accountInfo.address = query.getString(query.getColumnIndex(IProivderMetaData.AccountColumns.COLUMNS_ADDRESS));
-                accountInfo.company = query.getString(query.getColumnIndex(IProivderMetaData.AccountColumns.COLUMNS_COMPANY));
-                accountInfo.assetsType = query.getInt(query.getColumnIndex(IProivderMetaData.AccountColumns.COLUMNS_ASSETS_TYPE));
-                accountInfo.consumerGrade = query.getInt(query.getColumnIndex(IProivderMetaData.AccountColumns.COLUMNS_CONSUMER_GRADE));
-                accountInfo.cardId = query.getString(query.getColumnIndex(IProivderMetaData.AccountColumns.COLUMNS_CARD_ID));
-                accountInfo.flag = query.getString(query.getColumnIndex(IProivderMetaData.AccountColumns.COLUMNS_FLAG));
-                accountInfo.attribution = query.getString(query.getColumnIndex(IProivderMetaData.AccountColumns.COLUMNS_ATTRIBUTION));
-                accountInfo.integral = query.getInt(query.getColumnIndex(IProivderMetaData.AccountColumns.COLUMNS_INTEGRAL));
-                list.add(accountInfo);
-            }
+        Cursor query = context.getContentResolver().query(IProivderMetaData.AccountColumns.URI_ACCOUNT, null, null, null, null);
+        return buildAccountInfo(query);
+    }
+
+    public static List<AccountInfo> queryAllByIntegral(Context context) {
+        Cursor query = context.getContentResolver().query(IProivderMetaData.AccountColumns.URI_ACCOUNT, null, null, null, IProivderMetaData.AccountColumns.COLUMNS_INTEGRAL + " DESC");
+        return buildAccountInfo(query);
+    }
+
+    private static List<AccountInfo> buildAccountInfo(Cursor query) {
+        List<AccountInfo> list = new ArrayList<>();
+        while (query != null && query.moveToNext()) {
+            AccountInfo accountInfo = new AccountInfo();
+            accountInfo.name = query.getString(query.getColumnIndex(IProivderMetaData.AccountColumns.COLUMNS_NAME));
+            accountInfo.sex = query.getString(query.getColumnIndex(IProivderMetaData.AccountColumns.COLUMNS_SEX));
+            accountInfo.tel = query.getString(query.getColumnIndex(IProivderMetaData.AccountColumns.COLUMNS_TEL));
+            accountInfo.address = query.getString(query.getColumnIndex(IProivderMetaData.AccountColumns.COLUMNS_ADDRESS));
+            accountInfo.company = query.getString(query.getColumnIndex(IProivderMetaData.AccountColumns.COLUMNS_COMPANY));
+            accountInfo.assetsType = query.getInt(query.getColumnIndex(IProivderMetaData.AccountColumns.COLUMNS_ASSETS_TYPE));
+            accountInfo.consumerGrade = query.getInt(query.getColumnIndex(IProivderMetaData.AccountColumns.COLUMNS_CONSUMER_GRADE));
+            accountInfo.cardId = query.getString(query.getColumnIndex(IProivderMetaData.AccountColumns.COLUMNS_CARD_ID));
+            accountInfo.flag = query.getString(query.getColumnIndex(IProivderMetaData.AccountColumns.COLUMNS_FLAG));
+            accountInfo.attribution = query.getString(query.getColumnIndex(IProivderMetaData.AccountColumns.COLUMNS_ATTRIBUTION));
+            accountInfo.integral = query.getInt(query.getColumnIndex(IProivderMetaData.AccountColumns.COLUMNS_INTEGRAL));
+            list.add(accountInfo);
         }
+        query.close();
         return list;
+
     }
 }

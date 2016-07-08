@@ -21,14 +21,14 @@ public class BisApplication extends Application {
     }
 
     private void initAccountData() {
-        AccountContentProvider.insertAccount(this, new AccountInfo("叶国龙1", "男", "18600390104", "北京市", "中国银行",
-                AccountInfo.AssetsType_OTHER, AccountInfo.ConsumerGrade_NORMAL, "110228198805235413", "null", "中国银行北京分行", 0));
-        AccountContentProvider.insertAccount(this, new AccountInfo("叶国龙2", "男", "18600390104", "北京市", "中国银行",
-                AccountInfo.AssetsType_OTHER, AccountInfo.ConsumerGrade_NORMAL, "110228198805235413", "null", "中国银行北京分行", 0));
-        AccountContentProvider.insertAccount(this, new AccountInfo("叶国龙3", "男", "18600390104", "北京市", "中国银行",
-                AccountInfo.AssetsType_OTHER, AccountInfo.ConsumerGrade_NORMAL, "110228198805235413", "null", "中国银行北京分行", 0));
-        AccountContentProvider.insertAccount(this, new AccountInfo("叶国龙4", "男", "18600390104", "北京市", "中国银行",
-                AccountInfo.AssetsType_OTHER, AccountInfo.ConsumerGrade_NORMAL, "110228198805235413", "null", "中国银行北京分行", 0));
+        AccountContentProvider.insertAccount(this, new AccountInfo("杨淼", "女", "18600390104", "北京市", "中国银行",
+                AccountInfo.AssetsType_OTHER, AccountInfo.ConsumerGrade_NORMAL, "110228198805235413", "null", "中国银行北京分行", 100));
+        AccountContentProvider.insertAccount(this, new AccountInfo("杨三水", "女", "18600390104", "北京市", "中国银行",
+                AccountInfo.AssetsType_OTHER, AccountInfo.ConsumerGrade_NORMAL, "110228198805235413", "null", "中国银行北京分行", 465));
+        AccountContentProvider.insertAccount(this, new AccountInfo("yangmiao", "女", "18600390104", "北京市", "中国银行",
+                AccountInfo.AssetsType_OTHER, AccountInfo.ConsumerGrade_NORMAL, "110228198805235413", "null", "中国银行北京分行", 13215));
+        AccountContentProvider.insertAccount(this, new AccountInfo("大杨淼", "女", "18600390104", "北京市", "中国银行",
+                AccountInfo.AssetsType_OTHER, AccountInfo.ConsumerGrade_NORMAL, "110228198805235413", "null", "中国银行北京分行", 132));
     }
 
 }

@@ -22,9 +22,7 @@ public class SearchFragment extends BaseFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (list == null) {
-            list = AccountContentProvider.queryAll(getActivity());
-        }
+        list = AccountContentProvider.queryAll(getActivity());
     }
 
     @Nullable
