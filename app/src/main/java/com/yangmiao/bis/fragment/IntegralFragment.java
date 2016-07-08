@@ -20,6 +20,7 @@ public class IntegralFragment extends BaseFragment {
     private List<AccountInfo> list;
     private TextView fragment_integration_title;
     private RecyclerView fragment_integration_recyclerview;
+    private MyAdapter myAdapter;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,7 +35,12 @@ public class IntegralFragment extends BaseFragment {
         fragment_integration_title = (TextView) view.findViewById(R.id.fragment_integration_title);
         fragment_integration_recyclerview = (RecyclerView) view.findViewById(R.id.fragment_integration_recyclerview);
         fragment_integration_recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
-        fragment_integration_recyclerview.setAdapter(new MyAdapter());
+        if(myAdapter == null){
+            myAdapter = new MyAdapter();
+            fragment_integration_recyclerview.setAdapter(myAdapter);
+        } else {
+            myAdapter.notifyDataSetChanged();
+        }
         return view;
     }
 
