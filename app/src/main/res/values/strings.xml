@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">积分管理系统</string>
+    <string name="account_level_putong"><![CDATA["<font color=\"#1a99ff\">普通</font>"]]></string>
+    <string name="account_level_vip"><![CDATA["<font color=\"#f98817\">VIP</font>"]]></string>
+    <string name="account_level_caifu"><![CDATA["<font color=\"#efd43b\">财富</font>"]]></string>
+    <string name="account_level_sihang"><![CDATA["<font color=\"#ef1909\">私行</font>"]]></string>
 </resources>

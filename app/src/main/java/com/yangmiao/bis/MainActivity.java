@@ -54,9 +54,6 @@ public class MainActivity extends FragmentActivity {
 
         int defaultIndex = 0;
         fragmentList.get(defaultIndex).onSelected();
-//        if (main_title_text != null) {
-//            main_title_text.setText(dataList.get(defaultIndex).title);
-//        }
     }
 
     private void setListener() {
@@ -69,9 +66,6 @@ public class MainActivity extends FragmentActivity {
             @Override
             public void onPageSelected(int position) {
                 fragmentList.get(position).onSelected();
-//                if (main_title_text != null) {
-//                    main_title_text.setText(dataList.get(position).title);
-//                }
             }
 
             @Override

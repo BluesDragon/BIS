@@ -8,8 +8,9 @@
         android:id="@+id/fragment_integration_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="12dip"
         android:text="积分排行："
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dip"
         android:textColor="#444444"
         android:textSize="16dip" />
 
@@ -18,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/fragment_integration_title"
-        android:padding="12dip" />
+        android:padding="5dip" />
 
 
 </RelativeLayout>

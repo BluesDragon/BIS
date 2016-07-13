@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,6 +64,23 @@ public class IntegralFragment extends BaseFragment {
             myViewHolder.integral_item_id.setText("" + (position + 1));
             myViewHolder.integral_item_name.setText("" + accountInfo.name);
             myViewHolder.integral_item_integral.setText("" + accountInfo.integral);
+
+            int stringRes = R.string.account_level_putong;
+            switch (accountInfo.consumerGrade){
+                case AccountInfo.ConsumerGrade_NORMAL:
+                    stringRes = R.string.account_level_putong;
+                    break;
+                case AccountInfo.ConsumerGrade_VIP:
+                    stringRes = R.string.account_level_vip;
+                    break;
+                case AccountInfo.ConsumerGrade_CAIFU:
+                    stringRes = R.string.account_level_caifu;
+                    break;
+                case AccountInfo.ConsumerGrade_SIHANG:
+                    stringRes = R.string.account_level_sihang;
+                    break;
+            }
+            myViewHolder.integral_item_level.setText(Html.fromHtml(getString(stringRes)));
         }
 
         @Override
@@ -76,12 +94,14 @@ public class IntegralFragment extends BaseFragment {
         private class MyViewHolder extends RecyclerView.ViewHolder {
             TextView integral_item_id;
             TextView integral_item_name;
+            TextView integral_item_level;
             TextView integral_item_integral;
 
             public MyViewHolder(View itemView) {
                 super(itemView);
                 integral_item_id = (TextView) itemView.findViewById(R.id.integral_item_id);
                 integral_item_name = (TextView) itemView.findViewById(R.id.integral_item_name);
+                integral_item_level = (TextView) itemView.findViewById(R.id.integral_item_level);
                 integral_item_integral = (TextView) itemView.findViewById(R.id.integral_item_integral);
             }
         }

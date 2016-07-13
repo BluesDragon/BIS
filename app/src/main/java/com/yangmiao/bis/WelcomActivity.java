@@ -10,14 +10,22 @@ import android.os.Handler;
 import android.os.Message;
 import android.widget.ImageView;
 
+import com.yangmiao.bis.db.account.AccountContentProvider;
 import com.yangmiao.bis.db.login.LoginContentProvider;
+import com.yangmiao.bis.model.AccountInfo;
+import com.yangmiao.bis.util.SpUtils;
 
 public class WelcomActivity extends Activity {
+
+    private static final String INIT_DATA = "init_data";
+    private static final String INIT = "init";
 
     private static final int FINISH = 1;
 
     private ImageView welcome_img;
     private ObjectAnimator objectAnimator;
+    private boolean isAnimFinish = false;
+    private boolean isDataInitFinish = false;
 
     private Handler mHandler = new Handler() {
         @Override
@@ -41,6 +49,27 @@ public class WelcomActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
         welcome_img = (ImageView) findViewById(R.id.welcome_img);
+        initData();
+    }
+
+    private void initData(){
+        if (!SpUtils.getBoolean(this, INIT_DATA, INIT, false)) {
+            SpUtils.putBoolean(this, INIT_DATA, INIT, true);
+            initAccountData();
+            isDataInitFinish = true;
+            doFinish();
+        }
+    }
+
+    private void initAccountData() {
+        AccountContentProvider.insertAccount(this, new AccountInfo("杨淼", "女", "18600390104", "北京市", "中国银行",
+                AccountInfo.AssetsType_OTHER, AccountInfo.ConsumerGrade_NORMAL, "110228198805235413", "null", "中国银行北京分行", 100));
+        AccountContentProvider.insertAccount(this, new AccountInfo("杨三水", "女", "18600390104", "北京市", "中国银行",
+                AccountInfo.AssetsType_OTHER, AccountInfo.ConsumerGrade_VIP, "110228198805235413", "null", "中国银行北京分行", 465));
+        AccountContentProvider.insertAccount(this, new AccountInfo("yangmiao", "女", "18600390104", "北京市", "中国银行",
+                AccountInfo.AssetsType_OTHER, AccountInfo.ConsumerGrade_SIHANG, "110228198805235413", "null", "中国银行北京分行", 13215));
+        AccountContentProvider.insertAccount(this, new AccountInfo("大杨淼", "女", "18600390104", "北京市", "中国银行",
+                AccountInfo.AssetsType_OTHER, AccountInfo.ConsumerGrade_CAIFU, "110228198805235413", "null", "中国银行北京分行", 132));
     }
 
     @Override
@@ -53,11 +82,18 @@ public class WelcomActivity extends Activity {
                 @Override
                 public void onAnimationEnd(Animator animation) {
                     super.onAnimationEnd(animation);
-                    mHandler.removeMessages(FINISH);
-                    mHandler.sendEmptyMessage(FINISH);
+                    isAnimFinish = true;
+                    doFinish();
                 }
             });
             objectAnimator.start();
+        }
+    }
+
+    private void doFinish(){
+        if(isAnimFinish && isDataInitFinish){
+            mHandler.removeMessages(FINISH);
+            mHandler.sendEmptyMessage(FINISH);
         }
     }
 
