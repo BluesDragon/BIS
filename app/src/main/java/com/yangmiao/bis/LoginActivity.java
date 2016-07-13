@@ -2,7 +2,6 @@ package com.yangmiao.bis;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -10,7 +9,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.yangmiao.bis.db.IProivderMetaData;
 import com.yangmiao.bis.db.login.LoginContentProvider;
 import com.yangmiao.bis.util.SpUtils;
 import com.yangmiao.bis.util.Validator;
@@ -18,7 +16,8 @@ import com.yangmiao.bis.util.ViewScaleInjector;
 
 public class LoginActivity extends Activity implements View.OnClickListener {
 
-    public static final String DEFAULT_USERNAME = "18600390104";
+    public static final String DEFAULT_USERNAME_YGL = "18600390104";
+    public static final String DEFAULT_USERNAME_YM = "18910584367";
     public static final String DEFAULT_PASSWORD = "123456";
 
     private TextView login_btn_login;
@@ -34,8 +33,9 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     }
 
     private void init() {
-        if (!LoginContentProvider.checkUser(this, DEFAULT_USERNAME, DEFAULT_PASSWORD)) {
-            LoginContentProvider.insertUser(this, DEFAULT_USERNAME, DEFAULT_PASSWORD);
+        if (!LoginContentProvider.checkUser(this, DEFAULT_USERNAME_YGL, DEFAULT_PASSWORD)) {
+            LoginContentProvider.insertUser(this, DEFAULT_USERNAME_YGL, DEFAULT_PASSWORD);
+            LoginContentProvider.insertUser(this, DEFAULT_USERNAME_YM, DEFAULT_PASSWORD);
         }
         initView();
         setListener();

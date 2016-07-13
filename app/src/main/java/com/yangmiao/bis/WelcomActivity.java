@@ -56,9 +56,9 @@ public class WelcomActivity extends Activity {
         if (!SpUtils.getBoolean(this, INIT_DATA, INIT, false)) {
             SpUtils.putBoolean(this, INIT_DATA, INIT, true);
             initAccountData();
-            isDataInitFinish = true;
-            doFinish();
         }
+        isDataInitFinish = true;
+        doFinish();
     }
 
     private void initAccountData() {
