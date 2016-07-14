@@ -1,5 +1,9 @@
 package com.yangmiao.bis.model;
 
+import android.content.Context;
+
+import com.yangmiao.bis.R;
+
 public class AccountInfo {
 
     public static final int AssetsType_OTHER = 0;
@@ -28,6 +32,58 @@ public class AccountInfo {
 
     public AccountInfo() {
 
+    }
+
+    public String getConsumerGradeText(Context context) {
+        String text = null;
+        if (context != null) {
+            int id = R.string.account_level_putong;
+            switch (consumerGrade) {
+                case ConsumerGrade_NORMAL:
+                    id = R.string.account_level_putong;
+                    break;
+                case ConsumerGrade_VIP:
+                    id = R.string.account_level_vip;
+                    break;
+                case ConsumerGrade_CAIFU:
+                    id = R.string.account_level_caifu;
+                    break;
+                case ConsumerGrade_SIHANG:
+                    id = R.string.account_level_sihang;
+                    break;
+            }
+            text = context.getString(id);
+        }
+        return text;
+    }
+
+    public String getAssetsTypeText(Context context) {
+        String text = null;
+        if (context != null) {
+            int id = R.string.account_assets_type_other;
+            switch (assetsType) {
+                case AssetsType_OTHER:
+                    id = R.string.account_assets_type_other;
+                    break;
+                case AssetsType_LICAI:
+                    id = R.string.account_assets_type_licai;
+                    break;
+                case AssetsType_HUOQI:
+                    id = R.string.account_assets_type_huoqi;
+                    break;
+                case AssetsType_BAOXIAN:
+                    id = R.string.account_assets_type_baoxian;
+                    break;
+                case AssetsType_DINGQI:
+                    id = R.string.account_assets_type_dingqi;
+                    break;
+                case AssetsType_JIJIN:
+                    id = R.string.account_assets_type_jijin;
+                    break;
+            }
+            text = context.getString(id);
+        }
+        return text;
     }
 
     public AccountInfo(String name, String sex, String tel, String address, String company, int assetsType, int consumerGrade, String cardId, String flag, String attribution, int integral) {

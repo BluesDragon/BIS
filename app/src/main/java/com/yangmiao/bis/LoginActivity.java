@@ -1,6 +1,7 @@
 package com.yangmiao.bis;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -24,6 +25,14 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     private TextView login_btn_cancel;
     private EditText login_username_edittext;
     private EditText login_password_edittext;
+
+    public static void startLoginActivity(Context context){
+        if(context != null){
+            Intent intent = new Intent(context, LoginActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            context.startActivity(intent);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

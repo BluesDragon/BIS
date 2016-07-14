@@ -1,6 +1,5 @@
 package com.yangmiao.bis.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -11,7 +10,6 @@ import android.widget.TextView;
 import com.yangmiao.bis.LoginActivity;
 import com.yangmiao.bis.R;
 import com.yangmiao.bis.db.login.LoginContentProvider;
-import com.yangmiao.bis.util.LogUtil;
 import com.yangmiao.bis.util.ViewScaleInjector;
 
 public class SettingFragment extends BaseFragment implements View.OnClickListener {
@@ -33,7 +31,8 @@ public class SettingFragment extends BaseFragment implements View.OnClickListene
         switch (v.getId()) {
             case R.id.setting_btn_logout:
                 LoginContentProvider.logout(getActivity());
-                startActivity(new Intent(getActivity(), LoginActivity.class));
+                LoginActivity.startLoginActivity(getActivity());
+                getActivity().finish();
                 break;
         }
     }

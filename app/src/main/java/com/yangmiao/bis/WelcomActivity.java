@@ -65,11 +65,11 @@ public class WelcomActivity extends Activity {
         AccountContentProvider.insertAccount(this, new AccountInfo("杨淼", "女", "18600390104", "北京市", "中国银行",
                 AccountInfo.AssetsType_OTHER, AccountInfo.ConsumerGrade_NORMAL, "110228198805235413", "null", "中国银行北京分行", 100));
         AccountContentProvider.insertAccount(this, new AccountInfo("杨三水", "女", "18600390104", "北京市", "中国银行",
-                AccountInfo.AssetsType_OTHER, AccountInfo.ConsumerGrade_VIP, "110228198805235413", "null", "中国银行北京分行", 465));
+                AccountInfo.AssetsType_OTHER, AccountInfo.ConsumerGrade_VIP, "11022819880523541X", "null", "中国银行北京分行", 465));
         AccountContentProvider.insertAccount(this, new AccountInfo("yangmiao", "女", "18600390104", "北京市", "中国银行",
-                AccountInfo.AssetsType_OTHER, AccountInfo.ConsumerGrade_SIHANG, "110228198805235413", "null", "中国银行北京分行", 13215));
+                AccountInfo.AssetsType_OTHER, AccountInfo.ConsumerGrade_SIHANG, "110228198805235411", "null", "中国银行北京分行", 13215));
         AccountContentProvider.insertAccount(this, new AccountInfo("大杨淼", "女", "18600390104", "北京市", "中国银行",
-                AccountInfo.AssetsType_OTHER, AccountInfo.ConsumerGrade_CAIFU, "110228198805235413", "null", "中国银行北京分行", 132));
+                AccountInfo.AssetsType_OTHER, AccountInfo.ConsumerGrade_CAIFU, "110228198805235411", "null", "中国银行北京分行", 132));
     }
 
     @Override

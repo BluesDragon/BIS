@@ -4,4 +4,11 @@
     <string name="account_level_vip"><![CDATA["<font color=\"#f98817\">VIP</font>"]]></string>
     <string name="account_level_caifu"><![CDATA["<font color=\"#efd43b\">财富</font>"]]></string>
     <string name="account_level_sihang"><![CDATA["<font color=\"#ef1909\">私行</font>"]]></string>
+
+    <string name="account_assets_type_other">其他</string>
+    <string name="account_assets_type_licai">理财</string>
+    <string name="account_assets_type_huoqi">活期</string>
+    <string name="account_assets_type_baoxian">保险</string>
+    <string name="account_assets_type_dingqi">定期</string>
+    <string name="account_assets_type_jijin">基金</string>
 </resources>

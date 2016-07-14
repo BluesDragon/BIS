@@ -124,6 +124,11 @@ public class AccountContentProvider extends ContentProvider {
         return buildAccountInfo(query);
     }
 
+    public static List<AccountInfo> queryAllByCulumns(Context context, String selection, String[] selectionArgs) {
+        Cursor query = context.getContentResolver().query(IProivderMetaData.AccountColumns.URI_ACCOUNT, null, selection, selectionArgs, IProivderMetaData.AccountColumns.COLUMNS_INTEGRAL + " DESC");
+        return buildAccountInfo(query);
+    }
+
     private static List<AccountInfo> buildAccountInfo(Cursor query) {
         List<AccountInfo> list = new ArrayList<>();
         while (query != null && query.moveToNext()) {
