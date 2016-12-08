@@ -12,16 +12,16 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.test.greendao.Account;
 import com.yangmiao.bis.R;
-import com.yangmiao.bis.db.account.AccountContentProvider;
-import com.yangmiao.bis.model.AccountInfo;
+import com.yangmiao.bis.db.AccountProvider;
 import com.yangmiao.bis.util.Validator;
 
 import java.util.List;
 
 public class SearchFragment extends BaseFragment implements View.OnClickListener {
 
-    private List<AccountInfo> list;
+    private List<Account> list;
 
     private RecyclerView search_recyclerview;
     private TextView search_btn;
@@ -58,9 +58,9 @@ public class SearchFragment extends BaseFragment implements View.OnClickListener
                     String text = search_et.getText().toString();
                     list = null;
                     if (Validator.isMobile(text)) {
-                        list = AccountContentProvider.queryAllByCulumns(getContext(), " tel = ?", new String[]{text});
+                        list = AccountProvider.queryAllByCulumnsTel(text);
                     } else if (Validator.isIDCard(text)) {
-                        list = AccountContentProvider.queryAllByCulumns(getContext(), " card_id = ?", new String[]{text});
+                        list = AccountProvider.queryAllByCulumnsCardId(text);
                     }
                     if (list != null) {
                         search_recyclerview.setAdapter(mAdapter);
@@ -93,16 +93,16 @@ public class SearchFragment extends BaseFragment implements View.OnClickListener
         @Override
         public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
             MyViewHolder myViewHolder = (MyViewHolder) holder;
-            AccountInfo accountInfo = list.get(position);
-            myViewHolder.search_item_name.setText(accountInfo.name);
-            myViewHolder.search_item_sex.setText(accountInfo.sex);
-            myViewHolder.search_item_tel.setText(accountInfo.tel);
-            myViewHolder.search_item_card_id.setText(accountInfo.cardId);
-            myViewHolder.search_item_assets_type.setText(accountInfo.getAssetsTypeText(getContext()));
-            myViewHolder.search_item_assets_consumer_grade.setText(Html.fromHtml(accountInfo.getConsumerGradeText(getContext())));
-            myViewHolder.search_item_integral.setText("" + accountInfo.integral);
-            myViewHolder.search_item_attribution.setText(accountInfo.attribution);
-            myViewHolder.search_item_address.setText(accountInfo.address);
+            Account accountInfo = list.get(position);
+            myViewHolder.search_item_name.setText(accountInfo.getName());
+            myViewHolder.search_item_sex.setText(accountInfo.getSex());
+            myViewHolder.search_item_tel.setText(accountInfo.getTel());
+            myViewHolder.search_item_card_id.setText(accountInfo.getCard_id());
+            myViewHolder.search_item_assets_type.setText(AccountProvider.getAssetsTypeText(accountInfo.getAssets_type(), getContext()));
+            myViewHolder.search_item_assets_consumer_grade.setText(Html.fromHtml(AccountProvider.getConsumerGradeText(accountInfo.getConsumer_grade(), getContext())));
+            myViewHolder.search_item_integral.setText("" + accountInfo.getIntegral());
+            myViewHolder.search_item_attribution.setText(accountInfo.getAttribution());
+            myViewHolder.search_item_address.setText(accountInfo.getAddress());
         }
 
         class MyViewHolder extends RecyclerView.ViewHolder {

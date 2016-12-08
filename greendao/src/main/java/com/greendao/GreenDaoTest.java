@@ -48,7 +48,7 @@ public class GreenDaoTest implements IMetaData {
         accountBook.addIdProperty().autoincrement();//添加Id,自增长
         accountBook.addStringProperty(AccountColumns.COLUMNS_NAME);
         accountBook.addStringProperty(AccountColumns.COLUMNS_SEX);
-        accountBook.addIntProperty(AccountColumns.COLUMNS_TEL);
+        accountBook.addStringProperty(AccountColumns.COLUMNS_TEL);
         accountBook.addStringProperty(AccountColumns.COLUMNS_ADDRESS);
         accountBook.addStringProperty(AccountColumns.COLUMNS_COMPANY);
         accountBook.addIntProperty(AccountColumns.COLUMNS_ASSETS_TYPE);

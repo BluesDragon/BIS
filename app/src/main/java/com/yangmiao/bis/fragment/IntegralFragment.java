@@ -10,15 +10,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.test.greendao.Account;
 import com.yangmiao.bis.R;
-import com.yangmiao.bis.db.account.AccountContentProvider;
-import com.yangmiao.bis.model.AccountInfo;
+import com.yangmiao.bis.db.AccountProvider;
 
 import java.util.List;
 
 public class IntegralFragment extends BaseFragment {
 
-    private List<AccountInfo> list;
+    private List<Account> list;
     private TextView fragment_integration_title;
     private RecyclerView fragment_integration_recyclerview;
     private MyAdapter myAdapter;
@@ -26,7 +26,7 @@ public class IntegralFragment extends BaseFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        list = AccountContentProvider.queryAllByIntegral(getActivity());
+        list = AccountProvider.queryAllByIntegral();
     }
 
     @Nullable
@@ -36,7 +36,7 @@ public class IntegralFragment extends BaseFragment {
         fragment_integration_title = (TextView) view.findViewById(R.id.fragment_integration_title);
         fragment_integration_recyclerview = (RecyclerView) view.findViewById(R.id.fragment_integration_recyclerview);
         fragment_integration_recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
-        if(myAdapter == null){
+        if (myAdapter == null) {
             myAdapter = new MyAdapter();
         }
         fragment_integration_recyclerview.setAdapter(myAdapter);
@@ -60,23 +60,23 @@ public class IntegralFragment extends BaseFragment {
         public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
             MyViewHolder myViewHolder = (MyViewHolder) holder;
 
-            AccountInfo accountInfo = list.get(position);
+            Account accountInfo = list.get(position);
             myViewHolder.integral_item_id.setText("" + (position + 1));
-            myViewHolder.integral_item_name.setText("" + accountInfo.name);
-            myViewHolder.integral_item_integral.setText("" + accountInfo.integral);
+            myViewHolder.integral_item_name.setText("" + accountInfo.getName());
+            myViewHolder.integral_item_integral.setText("" + accountInfo.getIntegral());
 
             int stringRes = R.string.account_level_putong;
-            switch (accountInfo.consumerGrade){
-                case AccountInfo.ConsumerGrade_NORMAL:
+            switch (accountInfo.getConsumer_grade()) {
+                case AccountProvider.ConsumerGrade_NORMAL:
                     stringRes = R.string.account_level_putong;
                     break;
-                case AccountInfo.ConsumerGrade_VIP:
+                case AccountProvider.ConsumerGrade_VIP:
                     stringRes = R.string.account_level_vip;
                     break;
-                case AccountInfo.ConsumerGrade_CAIFU:
+                case AccountProvider.ConsumerGrade_CAIFU:
                     stringRes = R.string.account_level_caifu;
                     break;
-                case AccountInfo.ConsumerGrade_SIHANG:
+                case AccountProvider.ConsumerGrade_SIHANG:
                     stringRes = R.string.account_level_sihang;
                     break;
             }
@@ -85,7 +85,7 @@ public class IntegralFragment extends BaseFragment {
 
         @Override
         public int getItemCount() {
-            if(list != null){
+            if (list != null) {
                 return list.size();
             }
             return 0;

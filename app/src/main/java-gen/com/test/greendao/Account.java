@@ -14,7 +14,7 @@ public class Account {
     private Long id;
     private String name;
     private String sex;
-    private Integer tel;
+    private String tel;
     private String address;
     private String company;
     private Integer assets_type;
@@ -33,7 +33,7 @@ public class Account {
     }
 
     @Generated
-    public Account(Long id, String name, String sex, Integer tel, String address, String company, Integer assets_type, Integer consumer_grade, String card_id, String flag, String attribution, Integer integral) {
+    public Account(Long id, String name, String sex, String tel, String address, String company, Integer assets_type, Integer consumer_grade, String card_id, String flag, String attribution, Integer integral) {
         this.id = id;
         this.name = name;
         this.sex = sex;
@@ -72,11 +72,11 @@ public class Account {
         this.sex = sex;
     }
 
-    public Integer getTel() {
+    public String getTel() {
         return tel;
     }
 
-    public void setTel(Integer tel) {
+    public void setTel(String tel) {
         this.tel = tel;
     }
 

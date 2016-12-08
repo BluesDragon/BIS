@@ -34,11 +34,11 @@
             android:configChanges="orientation|keyboardHidden" />
 
         <provider
-            android:name=".db.login.LoginContentProvider"
+            android:name=".db.UserProvider"
             android:authorities="com.yangmiao.bis.login.provider"
             android:exported="false" />
         <provider
-            android:name=".db.account.AccountContentProvider"
+            android:name=".db.AccountProvider"
             android:authorities="com.yangmiao.bis.account.provider"
             android:exported="false" />
     </application>

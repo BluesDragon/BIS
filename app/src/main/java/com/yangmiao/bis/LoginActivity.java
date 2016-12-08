@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.yangmiao.bis.db.login.LoginContentProvider;
+import com.yangmiao.bis.db.UserProvider;
 import com.yangmiao.bis.util.SpUtils;
 import com.yangmiao.bis.util.Validator;
 import com.yangmiao.bis.util.ViewScaleInjector;
@@ -42,9 +42,9 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     }
 
     private void init() {
-        if (!LoginContentProvider.checkUser(this, DEFAULT_USERNAME_YGL, DEFAULT_PASSWORD)) {
-            LoginContentProvider.insertUser(this, DEFAULT_USERNAME_YGL, DEFAULT_PASSWORD);
-            LoginContentProvider.insertUser(this, DEFAULT_USERNAME_YM, DEFAULT_PASSWORD);
+        if (!UserProvider.checkLogin(this, DEFAULT_USERNAME_YGL, DEFAULT_PASSWORD)) {
+            UserProvider.insert(this, DEFAULT_USERNAME_YGL, DEFAULT_PASSWORD);
+            UserProvider.insert(this, DEFAULT_USERNAME_YM, DEFAULT_PASSWORD);
         }
         initView();
         setListener();
@@ -56,7 +56,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         login_username_edittext = (EditText) findViewById(R.id.login_username_edittext);
         login_password_edittext = (EditText) findViewById(R.id.login_password_edittext);
 
-        String username = LoginContentProvider.getCurrentLoginUsername(this);
+        String username = UserProvider.getCurrentLoginUsername(this);
         if (!TextUtils.isEmpty(username)) {
             login_username_edittext.setText(username);
             login_password_edittext.requestFocus();
@@ -93,7 +93,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             text = "用户名输入错误！";
         } else if (!Validator.isPassword(password)) {
             text = "密码输入错误！";
-        } else if (LoginContentProvider.checkUser(this, username, password)) {
+        } else if (UserProvider.checkLogin(this, username, password)) {
             text = "登录成功！";
             succ = true;
         } else {
@@ -101,7 +101,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         }
         Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
         if (succ) {
-            SpUtils.putBoolean(this, LoginContentProvider.SP_NAME, LoginContentProvider.SP_KEY_BOOLEAN_ISLOGIN, true);
+            SpUtils.putBoolean(this, UserProvider.SP_NAME, UserProvider.SP_KEY_BOOLEAN_ISLOGIN, true);
             startActivity(new Intent(this, MainActivity.class));
             finish();
         }

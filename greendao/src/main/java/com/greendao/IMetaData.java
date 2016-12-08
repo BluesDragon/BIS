@@ -13,17 +13,14 @@ public interface IMetaData {
     interface LoginColumns {
 
         // 实体类的名字
-        String ENTITY_NAME = "Login";
+        String ENTITY_NAME = "User";
 
         // 表名
-        String TABLE_NAME = "login";
+        String TABLE_NAME = "user";
 
         // 表列名
         String COLUMNS_USERNAME = "username";
         String COLUMNS_PASSWORD = "password";
-
-        // 得到表中的所有记录
-        String LIST = "vnd.android.cursor.dir/vnd.provider.list";
     }
 
     interface AccountColumns {
@@ -46,9 +43,6 @@ public interface IMetaData {
         String COLUMNS_FLAG = "flag";// 标记
         String COLUMNS_ATTRIBUTION = "attribution";// 归属地
         String COLUMNS_INTEGRAL = "integral";// 积分
-
-        // 得到表中的所有记录
-        String LIST = "vnd.android.cursor.dir/vnd.provider.list";
     }
 
 }

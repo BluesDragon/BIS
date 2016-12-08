@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.yangmiao.bis.LoginActivity;
 import com.yangmiao.bis.R;
-import com.yangmiao.bis.db.login.LoginContentProvider;
+import com.yangmiao.bis.db.UserProvider;
 import com.yangmiao.bis.util.ViewScaleInjector;
 
 public class SettingFragment extends BaseFragment implements View.OnClickListener {
@@ -30,7 +30,7 @@ public class SettingFragment extends BaseFragment implements View.OnClickListene
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.setting_btn_logout:
-                LoginContentProvider.logout(getActivity());
+                UserProvider.logout(getActivity());
                 LoginActivity.startLoginActivity(getActivity());
                 getActivity().finish();
                 break;

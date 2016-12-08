@@ -10,9 +10,9 @@ import android.os.Handler;
 import android.os.Message;
 import android.widget.ImageView;
 
-import com.yangmiao.bis.db.account.AccountContentProvider;
-import com.yangmiao.bis.db.login.LoginContentProvider;
-import com.yangmiao.bis.model.AccountInfo;
+import com.test.greendao.Account;
+import com.yangmiao.bis.db.AccountProvider;
+import com.yangmiao.bis.db.UserProvider;
 import com.yangmiao.bis.util.SpUtils;
 
 public class WelcomActivity extends Activity {
@@ -33,7 +33,7 @@ public class WelcomActivity extends Activity {
             super.handleMessage(msg);
             switch (msg.what) {
                 case FINISH:
-                    if(LoginContentProvider.isLogin(WelcomActivity.this)){
+                    if (UserProvider.isLogin(WelcomActivity.this)) {
                         startActivity(new Intent(WelcomActivity.this, MainActivity.class));
                     } else {
                         startActivity(new Intent(WelcomActivity.this, LoginActivity.class));
@@ -52,7 +52,7 @@ public class WelcomActivity extends Activity {
         initData();
     }
 
-    private void initData(){
+    private void initData() {
         if (!SpUtils.getBoolean(this, INIT_DATA, INIT, false)) {
             SpUtils.putBoolean(this, INIT_DATA, INIT, true);
             initAccountData();
@@ -62,21 +62,37 @@ public class WelcomActivity extends Activity {
     }
 
     private void initAccountData() {
-        AccountContentProvider.insertAccount(this, new AccountInfo("杨淼", "女", "18600390104", "北京市", "中国银行",
-                AccountInfo.AssetsType_OTHER, AccountInfo.ConsumerGrade_NORMAL, "110228198805235413", "null", "中国银行北京分行", 100));
-        AccountContentProvider.insertAccount(this, new AccountInfo("杨三水", "女", "18600390104", "北京市", "中国银行",
-                AccountInfo.AssetsType_OTHER, AccountInfo.ConsumerGrade_VIP, "11022819880523541X", "null", "中国银行北京分行", 465));
-        AccountContentProvider.insertAccount(this, new AccountInfo("yangmiao", "女", "18600390104", "北京市", "中国银行",
-                AccountInfo.AssetsType_OTHER, AccountInfo.ConsumerGrade_SIHANG, "110228198805235411", "null", "中国银行北京分行", 13215));
-        AccountContentProvider.insertAccount(this, new AccountInfo("大杨淼", "女", "18600390104", "北京市", "中国银行",
-                AccountInfo.AssetsType_OTHER, AccountInfo.ConsumerGrade_CAIFU, "110228198805235411", "null", "中国银行北京分行", 132));
+        AccountProvider.insertAccount(this, getAccount("杨淼", "女", "18600390104", "北京市", "中国银行",
+                AccountProvider.AssetsType_OTHER, AccountProvider.ConsumerGrade_NORMAL, "110228198805235413", "null", "中国银行北京分行", 100));
+        AccountProvider.insertAccount(this, getAccount("杨三水", "女", "18600390104", "北京市", "中国银行",
+                AccountProvider.AssetsType_OTHER, AccountProvider.ConsumerGrade_VIP, "11022819880523541X", "null", "中国银行北京分行", 465));
+        AccountProvider.insertAccount(this, getAccount("yangmiao", "女", "18600390104", "北京市", "中国银行",
+                AccountProvider.AssetsType_OTHER, AccountProvider.ConsumerGrade_SIHANG, "110228198805235411", "null", "中国银行北京分行", 13215));
+        AccountProvider.insertAccount(this, getAccount("大杨淼", "女", "18600390104", "北京市", "中国银行",
+                AccountProvider.AssetsType_OTHER, AccountProvider.ConsumerGrade_CAIFU, "110228198805235411", "null", "中国银行北京分行", 132));
+    }
+
+    private Account getAccount(String name, String sex, String tel, String address, String company, int assetsType, int consumerGrade, String cardId, String flag, String attribution, int integral) {
+        Account account = new Account();
+        account.setName(name);
+        account.setSex(sex);
+        account.setTel(tel);
+        account.setAddress(address);
+        account.setCompany(company);
+        account.setAssets_type(assetsType);
+        account.setConsumer_grade(consumerGrade);
+        account.setCard_id(cardId);
+        account.setFlag(flag);
+        account.setAttribution(attribution);
+        account.setIntegral(integral);
+        return account;
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         mHandler.removeMessages(FINISH);
-        if(objectAnimator == null){
+        if (objectAnimator == null) {
             objectAnimator = ObjectAnimator.ofFloat(welcome_img, "alpha", 0f, 1.0f).setDuration(2000);
             objectAnimator.addListener(new AnimatorListenerAdapter() {
                 @Override
@@ -90,8 +106,8 @@ public class WelcomActivity extends Activity {
         }
     }
 
-    private void doFinish(){
-        if(isAnimFinish && isDataInitFinish){
+    private void doFinish() {
+        if (isAnimFinish && isDataInitFinish) {
             mHandler.removeMessages(FINISH);
             mHandler.sendEmptyMessage(FINISH);
         }
@@ -101,7 +117,7 @@ public class WelcomActivity extends Activity {
     protected void onPause() {
         super.onPause();
         mHandler.removeMessages(FINISH);
-        if(objectAnimator != null){
+        if (objectAnimator != null) {
             objectAnimator.cancel();
             objectAnimator = null;
         }

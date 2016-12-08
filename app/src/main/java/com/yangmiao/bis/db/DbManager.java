@@ -7,7 +7,7 @@ import com.greendao.IMetaData;
 import com.test.greendao.AccountDao;
 import com.test.greendao.DaoMaster;
 import com.test.greendao.DaoSession;
-import com.test.greendao.LoginDao;
+import com.test.greendao.UserDao;
 
 public class DbManager {
 
@@ -36,9 +36,9 @@ public class DbManager {
         daoSession = daoMaster.newSession();
     }
 
-    public LoginDao getLoginDao() {
+    public UserDao getUserDao() {
         if (daoSession != null) {
-            return daoSession.getLoginDao();
+            return daoSession.getUserDao();
         }
         return null;
     }

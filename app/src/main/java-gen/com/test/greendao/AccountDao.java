@@ -25,7 +25,7 @@ public class AccountDao extends AbstractDao<Account, Long> {
         public final static Property Id = new Property(0, Long.class, "id", true, "_id");
         public final static Property Name = new Property(1, String.class, "name", false, "NAME");
         public final static Property Sex = new Property(2, String.class, "sex", false, "SEX");
-        public final static Property Tel = new Property(3, Integer.class, "tel", false, "TEL");
+        public final static Property Tel = new Property(3, String.class, "tel", false, "TEL");
         public final static Property Address = new Property(4, String.class, "address", false, "ADDRESS");
         public final static Property Company = new Property(5, String.class, "company", false, "COMPANY");
         public final static Property Assets_type = new Property(6, Integer.class, "assets_type", false, "ASSETS_TYPE");
@@ -52,7 +52,7 @@ public class AccountDao extends AbstractDao<Account, Long> {
                 "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
                 "\"NAME\" TEXT," + // 1: name
                 "\"SEX\" TEXT," + // 2: sex
-                "\"TEL\" INTEGER," + // 3: tel
+                "\"TEL\" TEXT," + // 3: tel
                 "\"ADDRESS\" TEXT," + // 4: address
                 "\"COMPANY\" TEXT," + // 5: company
                 "\"ASSETS_TYPE\" INTEGER," + // 6: assets_type
@@ -88,9 +88,9 @@ public class AccountDao extends AbstractDao<Account, Long> {
             stmt.bindString(3, sex);
         }
  
-        Integer tel = entity.getTel();
+        String tel = entity.getTel();
         if (tel != null) {
-            stmt.bindLong(4, tel);
+            stmt.bindString(4, tel);
         }
  
         String address = entity.getAddress();
@@ -153,9 +153,9 @@ public class AccountDao extends AbstractDao<Account, Long> {
             stmt.bindString(3, sex);
         }
  
-        Integer tel = entity.getTel();
+        String tel = entity.getTel();
         if (tel != null) {
-            stmt.bindLong(4, tel);
+            stmt.bindString(4, tel);
         }
  
         String address = entity.getAddress();
@@ -210,7 +210,7 @@ public class AccountDao extends AbstractDao<Account, Long> {
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
             cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // name
             cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // sex
-            cursor.isNull(offset + 3) ? null : cursor.getInt(offset + 3), // tel
+            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // tel
             cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // address
             cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // company
             cursor.isNull(offset + 6) ? null : cursor.getInt(offset + 6), // assets_type
@@ -228,7 +228,7 @@ public class AccountDao extends AbstractDao<Account, Long> {
         entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setName(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
         entity.setSex(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
-        entity.setTel(cursor.isNull(offset + 3) ? null : cursor.getInt(offset + 3));
+        entity.setTel(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
         entity.setAddress(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
         entity.setCompany(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
         entity.setAssets_type(cursor.isNull(offset + 6) ? null : cursor.getInt(offset + 6));
