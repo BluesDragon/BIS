@@ -143,12 +143,14 @@ public class SpringIndicator extends FrameLayout {
      * Set current point position.
      */
     private void createPoints() {
-        View view = tabs.get(viewPager.getCurrentItem());
-        springView.getHeadPoint().setX(view.getX() + view.getWidth() / 2);
-        springView.getHeadPoint().setY(view.getY() + view.getHeight() / 2);
-        springView.getFootPoint().setX(view.getX() + view.getWidth() / 2);
-        springView.getFootPoint().setY(view.getY() + view.getHeight() / 2);
-        springView.animCreate();
+        if (tabs != null) {
+            View view = tabs.get(viewPager.getCurrentItem());
+            springView.getHeadPoint().setX(view.getX() + view.getWidth() / 2);
+            springView.getHeadPoint().setY(view.getY() + view.getHeight() / 2);
+            springView.getFootPoint().setX(view.getX() + view.getWidth() / 2);
+            springView.getFootPoint().setY(view.getY() + view.getHeight() / 2);
+            springView.animCreate();
+        }
     }
 
 
@@ -157,7 +159,9 @@ public class SpringIndicator extends FrameLayout {
         super.onLayout(changed, l, t, r, b);
         if (changed) {
             createPoints();
-            setSelectedTextColor(viewPager.getCurrentItem());
+            if (viewPager != null) {
+                setSelectedTextColor(viewPager.getCurrentItem());
+            }
         }
     }
 

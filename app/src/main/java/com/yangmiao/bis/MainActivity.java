@@ -1,7 +1,6 @@
 package com.yangmiao.bis;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.widget.TextView;
 
@@ -19,7 +18,7 @@ import com.yangmiao.bis.util.LogUtil;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends CommonBaseActivity {
 
     private ScrollerViewPager viewPager;
     private MyAdapter myAdapter;

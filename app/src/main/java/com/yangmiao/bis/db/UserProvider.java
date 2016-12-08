@@ -29,16 +29,28 @@ public class UserProvider {
         DbManager.getInstance().getUserDao().insert(login);
     }
 
+    public static void insert(String username, String password) {
+        User user = new User();
+        user.setUsername(username);
+        user.setPassword(password);
+        insert(user);
+    }
+
+    public static boolean checkLogin(String username, String password) {
+        User user = new User();
+        user.setUsername(username);
+        user.setPassword(password);
+        return checkLogin(user);
+    }
+
     public static boolean checkLogin(User login) {
         if (login == null) {
             return false;
         }
         QueryBuilder<User> queryBuilder = DbManager.getInstance().getUserDao().queryBuilder();
         queryBuilder.and(UserDao.Properties.Username.eq(login.getUsername()), UserDao.Properties.Password.eq(login.getPassword()));
-        User unique = queryBuilder.unique();
-        return unique != null;
+        return !queryBuilder.list().isEmpty();
     }
-
 
     public static String getCurrentLoginUsername(Context context) {
         return SpUtils.getString(context, SP_NAME, SP_KEY_STRING_LOGIN_USERNAME);

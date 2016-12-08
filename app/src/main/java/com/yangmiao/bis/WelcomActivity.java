@@ -3,7 +3,7 @@ package com.yangmiao.bis;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
-import android.app.Activity;
+import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,7 +15,7 @@ import com.yangmiao.bis.db.AccountProvider;
 import com.yangmiao.bis.db.UserProvider;
 import com.yangmiao.bis.util.SpUtils;
 
-public class WelcomActivity extends Activity {
+public class WelcomActivity extends CommonBaseActivity {
 
     private static final String INIT_DATA = "init_data";
     private static final String INIT = "init";
@@ -94,6 +94,13 @@ public class WelcomActivity extends Activity {
         mHandler.removeMessages(FINISH);
         if (objectAnimator == null) {
             objectAnimator = ObjectAnimator.ofFloat(welcome_img, "alpha", 0f, 1.0f).setDuration(2000);
+            objectAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                @Override
+                public void onAnimationUpdate(ValueAnimator animation) {
+                    float value = (float) animation.getAnimatedValue();
+                    getStatusBar().setAlpha(value);
+                }
+            });
             objectAnimator.addListener(new AnimatorListenerAdapter() {
                 @Override
                 public void onAnimationEnd(Animator animation) {

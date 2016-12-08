@@ -1,6 +1,5 @@
 package com.yangmiao.bis;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +14,7 @@ import com.yangmiao.bis.util.SpUtils;
 import com.yangmiao.bis.util.Validator;
 import com.yangmiao.bis.util.ViewScaleInjector;
 
-public class LoginActivity extends Activity implements View.OnClickListener {
+public class LoginActivity extends CommonBaseActivity implements View.OnClickListener {
 
     public static final String DEFAULT_USERNAME_YGL = "18600390104";
     public static final String DEFAULT_USERNAME_YM = "18910584367";
@@ -26,8 +25,8 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     private EditText login_username_edittext;
     private EditText login_password_edittext;
 
-    public static void startLoginActivity(Context context){
-        if(context != null){
+    public static void startLoginActivity(Context context) {
+        if (context != null) {
             Intent intent = new Intent(context, LoginActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
             context.startActivity(intent);
@@ -42,9 +41,9 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     }
 
     private void init() {
-        if (!UserProvider.checkLogin(this, DEFAULT_USERNAME_YGL, DEFAULT_PASSWORD)) {
-            UserProvider.insert(this, DEFAULT_USERNAME_YGL, DEFAULT_PASSWORD);
-            UserProvider.insert(this, DEFAULT_USERNAME_YM, DEFAULT_PASSWORD);
+        if (!UserProvider.checkLogin(DEFAULT_USERNAME_YGL, DEFAULT_PASSWORD)) {
+            UserProvider.insert(DEFAULT_USERNAME_YGL, DEFAULT_PASSWORD);
+            UserProvider.insert(DEFAULT_USERNAME_YM, DEFAULT_PASSWORD);
         }
         initView();
         setListener();
@@ -93,7 +92,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             text = "用户名输入错误！";
         } else if (!Validator.isPassword(password)) {
             text = "密码输入错误！";
-        } else if (UserProvider.checkLogin(this, username, password)) {
+        } else if (UserProvider.checkLogin(username, password)) {
             text = "登录成功！";
             succ = true;
         } else {
