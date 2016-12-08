@@ -14,7 +14,6 @@ import com.yangmiao.bis.fragment.viewholder.HomeListItemViewHolder;
 import com.yangmiao.bis.fragment.viewholder.IViewHolder;
 import com.yangmiao.bis.model.HomeListItemAssetsChangeInfo;
 import com.yangmiao.bis.model.HomeListItemInfo;
-import com.yangmiao.bis.model.IHomeListItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,8 +67,6 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     public void onSelected() {
-
-
     }
 
     private class MyItemAdapter extends RecyclerView.Adapter {
@@ -103,7 +100,7 @@ public class HomeFragment extends BaseFragment {
             if (item == null) {
                 return;
             }
-            iViewHolder.bindView(item);
+            iViewHolder.build(item);
         }
     }
 }

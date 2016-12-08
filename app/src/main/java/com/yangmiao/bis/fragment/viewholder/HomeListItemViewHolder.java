@@ -26,8 +26,8 @@ public class HomeListItemViewHolder extends BaseViewHolder {
     }
 
     @Override
-    public void bindView(IHomeListItem item) {
-        info = (HomeListItemInfo) item;
+    public void build(Object o) {
+        info = (HomeListItemInfo) o;
         list_item_fragment_home_title.setText(info.title);
         if (myAdapter == null) {
             myAdapter = new MyAdapter();
@@ -52,7 +52,7 @@ public class HomeListItemViewHolder extends BaseViewHolder {
             if (item == null) {
                 return;
             }
-            iViewHolder.bindView(item);
+            iViewHolder.build(item);
         }
 
         @Override

@@ -21,8 +21,8 @@ public class ChuZhangHoler extends BaseViewHolder {
     }
 
     @Override
-    public void bindView(IHomeListItem item) {
-        HomeListItemAssetsChangeInfo info = (HomeListItemAssetsChangeInfo) item;
+    public void build(Object o) {
+        HomeListItemAssetsChangeInfo info = (HomeListItemAssetsChangeInfo) o;
         list_item_fragment_home_assets_item_name.setText(info.name);
         list_item_fragment_home_assets_item_assets_change.setText(info.assetsChangeDetail);
         list_item_fragment_home_assets_item_change_time.setText(info.changeTime);
